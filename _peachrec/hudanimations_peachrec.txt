@@ -1,0 +1,47 @@
+event HintMessageHide
+{
+	Animate HudHintDisplay	FgColor	"255 220 0 0"	Linear	0.0	0.2
+	Animate HudHintDisplay	HintSize	"0"	Deaccel 0.2	0.3
+
+	RunEventChild MainMenuOverride PeachRecSpawn 0.0
+}
+event HudTournamentSetupPanelOpen
+{
+	Animate HudTournamentSetupt	Position	"c-90 -70"	Linear 0.0 0.001
+	Animate HudTournamentSetup	Position	"c-90 70"	Spline 0.001 0.2
+
+	RunEventChild MainMenuOverride PeachRecOpen 0.0
+}
+event HudTournamentSetupPanelClose
+{
+	Animate HudTournamentSetup	Position	"c-90 70"	Linear 0.0 0.001
+	Animate HudTournamentSetup	Position	"c-90 -70"	Spline 0.001 0.2
+
+	RunEventChild MainMenuOverride PeachRecClose 0.0
+}
+event HudReadyPulseEnd
+{
+	Animate TournamentInstructionsLabel	FgColor	"TanLight"	Linear 0.0 0.1
+	StopEvent HudReadyPulse		0.0
+	StopEvent HudReadyPulseLoop	0.0
+
+	RunEventChild MainMenuOverride PeachRecMvM 0.0 //Must run 3 times
+	RunEventChild MainMenuOverride PeachRecMvM 0.0
+	RunEventChild MainMenuOverride PeachRecMvM 0.0
+}
+event PeachRecSpawn
+{
+	FireCommand 0.0 "engine peachrec"
+}
+event PeachRecOpen
+{
+	FireCommand 0.001 "engine pr_open"
+}
+event PeachRecClose
+{
+	FireCommand 0.0 "engine pr_close"
+}
+event PeachRecMvM
+{
+	FireCommand 0.0 "engine pr_mvm"
+}
